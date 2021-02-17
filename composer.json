@@ -8,11 +8,11 @@
   }],
   "require": {
     "php": ">=7.0",
-    "guzzlehttp/guzzle": "^6.3",
-    "nesbot/carbon": "~1.21",
+    "guzzlehttp/guzzle": "^6.3",    
     "league/fractal": "^0.17.0",
     "mikehaertl/php-tmpfile": "^1.1",
-    "jefersondaniel/novoboletophp": "0.5.*"
+    "jefersondaniel/novoboletophp": "0.5.*",
+    "nesbot/carbon": "~2.0"
   },
   "autoload": {
     "psr-4": {
