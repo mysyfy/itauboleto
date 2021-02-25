@@ -23,14 +23,14 @@ class BoletoValidate
      */
     public function config($config = [])
     {
-        
+
         if(empty($config))
             throw new ValidationException('Necessário passar os dados de configuração para geração do boleto');
 
-        if(!isset($config, 'clientId']))
+        if(!isset($config['clientId']))
             throw new ValidationException('A configuração clientId é obrigatória');
 
-        if(!isset($config, 'clientSecret']))
+        if(!isset($config['clientSecret']))
             throw new ValidationException('A configuração clientSecret é obrigatória');
 
         if(!isset($config['itauKey']))
