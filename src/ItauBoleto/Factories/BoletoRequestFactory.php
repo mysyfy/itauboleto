@@ -21,6 +21,7 @@ use MatheusHack\ItauBoleto\Requests\GrupoDescontoRequest;
 use MatheusHack\ItauBoleto\Requests\SacadorAvalistaRequest;
 use MatheusHack\ItauBoleto\Requests\GrupoEmailPagadorRequest;
 use MatheusHack\ItauBoleto\Requests\RecebimentoDivergenteRequest;
+use MatheusHack\ItauBoleto\Helpers;
 
 /**
  * Class BoletoRequestFactory

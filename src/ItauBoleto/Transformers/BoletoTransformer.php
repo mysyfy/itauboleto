@@ -13,6 +13,7 @@ use MatheusHack\ItauBoleto\Constants\Status;
 use MatheusHack\ItauBoleto\Constants\Layout;
 use MatheusHack\ItauBoleto\Services\ServiceBoleto;
 use MatheusHack\ItauBoleto\Response\BoletoResponse;
+use MatheusHack\ItauBoleto\Helpers;
 
 /**
  * Class BoletoTransformer

@@ -13,6 +13,8 @@ use GuzzleHttp\Exception\RequestException;
 use MatheusHack\ItauBoleto\Constants\Status;
 use MatheusHack\ItauBoleto\Constants\TipoAmbiente;
 use MatheusHack\ItauBoleto\Exceptions\BoletoException;
+use MatheusHack\ItauBoleto\Helpers;
+
 
 
 /**

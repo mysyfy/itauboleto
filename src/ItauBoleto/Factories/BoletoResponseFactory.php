@@ -15,6 +15,7 @@ use MatheusHack\ItauBoleto\Helpers\Boleto;
 use MatheusHack\ItauBoleto\Requests\DadosComplementaresRequest;
 use MatheusHack\ItauBoleto\Response\BoletoResponse;
 use MatheusHack\ItauBoleto\Response\BoletosResponse;
+use MatheusHack\ItauBoleto\Helpers;
 
 /**
  * Class BoletoResponseFactory
