@@ -23,19 +23,20 @@ class BoletoValidate
      */
     public function config($config = [])
     {
+        
         if(empty($config))
             throw new ValidationException('Necessário passar os dados de configuração para geração do boleto');
 
-        if(!data_get($config, 'clientId'))
+        if(!isset($config, 'clientId']))
             throw new ValidationException('A configuração clientId é obrigatória');
 
-        if(!data_get($config, 'clientSecret'))
+        if(!isset($config, 'clientSecret']))
             throw new ValidationException('A configuração clientSecret é obrigatória');
 
-        if(!data_get($config, 'itauKey'))
+        if(!isset($config['itauKey']))
             throw new ValidationException('A configuração itauKey é obrigatória');
 
-        if(!data_get($config, 'cnpj'))
+        if(!isset($config['cnpj']))
             throw new ValidationException('A configuração CNPJ é obrigatória');
     }
 }
