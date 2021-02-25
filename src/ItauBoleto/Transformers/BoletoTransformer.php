@@ -42,9 +42,9 @@ class BoletoTransformer extends Fractal\TransformerAbstract
      */
     function __construct(array $config)
     {
-        $this->print = data_get($config, 'print', 'none');
-        $this->logo = data_get($config,'logo', 'http://placehold.it/200&text=logo');
-        $this->cachePath = data_get($config,'cachePath', false);
+        $this->print = Boleto::data_get($config, 'print', 'none');
+        $this->logo = Boleto::data_get($config,'logo', 'http://placehold.it/200&text=logo');
+        $this->cachePath = Boleto::data_get($config,'cachePath', false);
         $this->serviceBoleto = new ServiceBoleto($config);
     }
 

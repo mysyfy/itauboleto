@@ -100,9 +100,9 @@ class ItauClient
         $this->clientSecret = $config['clientSecret'];
         $this->itauKey = $config['itauKey'];
         $this->cnpj = $config['cnpj'];
-        $this->oAuthUrl = (data_get($config,'production', false) === true ? self::OAUTH_PRODUCAO : self::OAUTH_TESTE);
-        $this->boletoUrl = (data_get($config,'production', false) === true ? self::BOLETO_PRODUCAO : self::BOLETO_TESTE);
-        $this->ambiente = (data_get($config,'production', false) === true ? TipoAmbiente::PRODUCAO : TipoAmbiente::TESTE);
+        $this->oAuthUrl = (Boleto::data_get($config,'production', false) === true ? self::OAUTH_PRODUCAO : self::OAUTH_TESTE);
+        $this->boletoUrl = (Boleto::data_get($config,'production', false) === true ? self::BOLETO_PRODUCAO : self::BOLETO_TESTE);
+        $this->ambiente = (Boleto::data_get($config,'production', false) === true ? TipoAmbiente::PRODUCAO : TipoAmbiente::TESTE);
     }
 
     /**
@@ -142,8 +142,8 @@ class ItauClient
             $jsonResponse = $bodyResponse;
             $bodyResponse = $parameters;
 
-            if(data_get($jsonResponse, 'mensagem')){
-                if(data_get($jsonResponse, 'campos')) {
+            if(Boleto::data_get($jsonResponse, 'mensagem')){
+                if(Boleto::data_get($jsonResponse, 'campos')) {
                     $bodyResponse->status = Status::ERRO_VALIDACAO;
                     $mensagens = [];
 
@@ -154,7 +154,7 @@ class ItauClient
                     $bodyResponse->erros = $mensagens;
                 }else{
                     $bodyResponse->status = Status::ERRO;
-                    $bodyResponse->erros = ['erro' => data_get($jsonResponse, 'mensagem')];
+                    $bodyResponse->erros = ['erro' => Boleto::data_get($jsonResponse, 'mensagem')];
                 }
             }
 
