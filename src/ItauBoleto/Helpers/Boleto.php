@@ -8,48 +8,48 @@
 
 namespace MatheusHack\ItauBoleto\Helpers;
 
-
-function data_get($target, $key, $default = null) {
-
-    if (is_null($key)) return $target;
-
-    foreach (explode('.', $key) as $segment) {
-
-        if (is_array($target)) {
-
-            if ( ! array_key_exists($segment, $target)) {
-                return value($default);
-            }
-
-            $target = $target[$segment];
-
-        } elseif (is_object($target)) {
-
-            if ( ! isset($target->{$segment})) {
-                return value($default);
-            }
-
-            $target = $target->{$segment};
-
-        } else {
-
-            return value($default);
-
-        }
-
-    }
-
-    return $target;
-    
-}
-
-
 /**
  * Class Boleto
  * @package MatheusHack\ItauBoleto\Helpers
  */
 class Boleto
 {
+
+    public static function data_get($target, $key, $default = null) {
+
+        if (is_null($key)) return $target;
+
+        foreach (explode('.', $key) as $segment) {
+
+            if (is_array($target)) {
+
+                if ( ! array_key_exists($segment, $target)) {
+                    return value($default);
+                }
+
+                $target = $target[$segment];
+
+            } elseif (is_object($target)) {
+
+                if ( ! isset($target->{$segment})) {
+                    return value($default);
+                }
+
+                $target = $target->{$segment};
+
+            } else {
+
+                return value($default);
+
+            }
+
+        }
+
+        return $target;
+        
+    }
+
+
     /**
      * @param $num
      * @return int
