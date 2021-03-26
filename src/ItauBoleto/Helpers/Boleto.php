@@ -14,6 +14,9 @@ namespace MatheusHack\ItauBoleto\Helpers;
  */
 class Boleto
 {
+    public static function value($value) {
+         return $value;
+    }
 
     public static function data_get($target, $key, $default = null) {
 
@@ -24,7 +27,7 @@ class Boleto
             if (is_array($target)) {
 
                 if ( ! array_key_exists($segment, $target)) {
-                    return value($default);
+                    return Boleto::value($default);
                 }
 
                 $target = $target[$segment];
@@ -32,14 +35,14 @@ class Boleto
             } elseif (is_object($target)) {
 
                 if ( ! isset($target->{$segment})) {
-                    return value($default);
+                    return Boleto::value($default);
                 }
 
                 $target = $target->{$segment};
 
             } else {
 
-                return value($default);
+                return Boleto::value($default);
 
             }
 

@@ -13,7 +13,7 @@ use MatheusHack\ItauBoleto\Constants\Status;
 use MatheusHack\ItauBoleto\Constants\Layout;
 use MatheusHack\ItauBoleto\Services\ServiceBoleto;
 use MatheusHack\ItauBoleto\Response\BoletoResponse;
-use MatheusHack\ItauBoleto\Helpers;
+use MatheusHack\ItauBoleto\Helpers\Boleto;
 
 /**
  * Class BoletoTransformer
@@ -25,6 +25,11 @@ class BoletoTransformer extends Fractal\TransformerAbstract
      * @var mixed
      */
     private $logo;
+
+    /**
+     * @var mixed
+     */
+    private $imagesBaseURL;
 
     /**
      * @var mixed
@@ -46,6 +51,7 @@ class BoletoTransformer extends Fractal\TransformerAbstract
         $this->logo = Boleto::data_get($config,'logo', 'http://placehold.it/200&text=logo');
         $this->cachePath = Boleto::data_get($config,'cachePath', false);
         $this->serviceBoleto = new ServiceBoleto($config);
+        $this->imagesBaseURL = $config['imageUrl'];
     }
 
     /**
@@ -87,9 +93,9 @@ class BoletoTransformer extends Fractal\TransformerAbstract
 
         if($boleto->getStatus() == Status::REGISTRADO && $this->print != Layout::NONE) {
             if ($this->print == 'pdf')
-                $print = $this->serviceBoleto->printPdf($transform, $this->logo, $this->cachePath);
+                $print = $this->serviceBoleto->printPdf($transform, $this->logo, $this->cachePath, $this->imagesBaseURL);
             else
-                $print = $this->serviceBoleto->printHtml($transform, $this->logo, $this->cachePath);
+                $print = $this->serviceBoleto->printHtml($transform, $this->logo, $this->cachePath, $this->imagesBaseURL);
         }
 
         return $transform + [

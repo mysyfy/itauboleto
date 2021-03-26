@@ -70,12 +70,12 @@ class ServiceBoleto
      * @param $cachePath
      * @return null|string
      */
-    public function printHtml(array $boleto, $logoEmpresa, $cachePath)
+    public function printHtml(array $boleto, $logoEmpresa, $cachePath, $imagePath = '')
     {
         try {
             $factory = new BoletoFactory([
                 'cachePath' => $cachePath,
-                'imageUrl' => realpath(dirname(__FILE__)."/../../resources/images")
+                'imageUrl' => $imagePath ?: realpath(dirname(__FILE__)."/../../resources/images")
             ]);
 
             $dados = [
@@ -126,12 +126,12 @@ class ServiceBoleto
      * @param $cachePath
      * @return null|string
      */
-    public function printPdf(array $boleto, $logoEmpresa, $cachePath)
+    public function printPdf(array $boleto, $logoEmpresa, $cachePath, $imagePath = '')
     {
         try {
             $factory = new BoletoFactory([
                 'cachePath' => $cachePath,
-                'imageUrl' => realpath(dirname(__FILE__)."/../../resources/images")
+                'imageUrl' => $imagePath ?: realpath(dirname(__FILE__)."/../../resources/images")
             ]);
 
             $dados = [

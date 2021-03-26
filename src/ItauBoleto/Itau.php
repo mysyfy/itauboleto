@@ -15,7 +15,7 @@ use MatheusHack\ItauBoleto\Services\ServiceBoleto;
 use MatheusHack\ItauBoleto\Validates\BoletoValidate;
 use MatheusHack\ItauBoleto\Exceptions\BoletoException;
 use MatheusHack\ItauBoleto\Transformers\BoletoTransformer;
-use MatheusHack\ItauBoleto\Helpers;
+use MatheusHack\ItauBoleto\Helpers\Boleto;
 
 /**
  * Class Itau

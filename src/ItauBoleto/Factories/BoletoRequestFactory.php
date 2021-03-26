@@ -47,7 +47,9 @@ class BoletoRequestFactory
         $boletoRequest->titulo_aceite = Boleto::data_get($boleto, 'titulo_aceite', $boletoRequest->titulo_aceite);
         $boletoRequest->tipo_carteira_titulo = Boleto::data_get($boleto, 'tipo_carteira_titulo', $boletoRequest->tipo_carteira_titulo);
         $boletoRequest->nosso_numero = Boleto::data_get($boleto, 'nosso_numero', $boletoRequest->nosso_numero);
-        $boletoRequest->codigo_barras = Boleto::data_get($boleto, 'codigo_barras', $boletoRequest->codigo_barras);
+        if(Boleto::data_get($boleto, 'codigo_barras', $boletoRequest->codigo_barras)) {
+            $boletoRequest->codigo_barras = Boleto::data_get($boleto, 'codigo_barras', $boletoRequest->codigo_barras);
+        }
         $boletoRequest->data_vencimento = Boleto::data_get($boleto, 'data_vencimento', $boletoRequest->data_vencimento);
         $boletoRequest->valor_cobrado = Boleto::formatMoney(Boleto::data_get($boleto, 'valor_cobrado', $boletoRequest->valor_cobrado), 17);
         $boletoRequest->seu_numero = Boleto::formatString(Boleto::data_get($boleto, 'seu_numero', $boletoRequest->seu_numero), 10);
@@ -76,6 +78,7 @@ class BoletoRequestFactory
         $boletoRequest->multa = $this->setMulta(Boleto::data_get($boleto, 'multa', []));
         $boletoRequest->recebimento_divergente = $this->setRecebimentoDivergente(Boleto::data_get($boleto, 'recebimento_divergente', []));
         $boletoRequest->digito_verificador_nosso_numero = $this->makeDigitoVerificadorNossoNumero($boletoRequest);
+        //$boletoRequest->digito_verificador_nosso_numero = Boleto::mod10($boletoRequest->tipo_carteira_titulo.$boletoRequest->nosso_numero);
 
         if(Boleto::data_get($boleto, 'debito'))
             $boletoRequest->debito =  $this->setDebito(Boleto::data_get($boleto, 'debito', []));
